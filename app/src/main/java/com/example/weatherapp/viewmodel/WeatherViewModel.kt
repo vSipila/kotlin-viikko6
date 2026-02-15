@@ -43,7 +43,7 @@ class WeatherViewModel : ViewModel() {
             try {
 
 
-                val result = RetrofitInstance.api.getWeather(city, "2c7e996c44a721b8e5cdecd979f3fd74")
+                val result = RetrofitInstance.api.getWeather(city, "")
                 _uiState.value = _uiState.value.copy(weather = result, isLoading = false)
             } catch (e: Exception) {
                 _uiState.value = _uiState.value.copy(
