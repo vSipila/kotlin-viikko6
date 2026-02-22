@@ -12,31 +12,32 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.weatherapp.data.model.WeatherResponse
+import com.example.weatherapp.data.model.WeatherEntity
 
 @Composable
-fun WeatherResultSection(weather: WeatherResponse) {
-
+fun WeatherResultSection(weather: WeatherEntity) {
     Card(
-        modifier = Modifier.Companion.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth()
+
     ) {
 
         Column(
-            modifier = Modifier.Companion.padding(16.dp),
-            horizontalAlignment = Alignment.Companion.CenterHorizontally
+            modifier = Modifier.padding(16.dp),
+
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Text(weather.name, style = MaterialTheme.typography.titleLarge)
-            Spacer(modifier = Modifier.Companion.height(8.dp))
+            Text(weather.cityName, style = MaterialTheme.typography.titleLarge)
+            Spacer(modifier = Modifier.height(8.dp))
             Text(
-                "${weather.main.temp}°C",
+                "${weather.temperature}°C",
                 style = MaterialTheme.typography.displayMedium
             )
 
-            Text(weather.weather.firstOrNull()?.description ?: "")
-            Spacer(modifier = Modifier.Companion.height(8.dp))
-            Text("Tuntuu kuin: ${weather.main.feels_like}°C")
-            Text("Kosteus: ${weather.main.humidity}%")
+            Text(weather.description)
+            Spacer(modifier = Modifier.height(8.dp))
+            Text("Tuntuu kuin: ${weather.feelsLike}°C")
+            Text("Kosteus: ${weather.humidity}%")
         }
     }
 
