@@ -1,0 +1,26 @@
+Room-tietokanta
+Room on Android-tietokantakirjasto.
+Entity: määrittelee tietokantataulun rakenteen
+dao sisältää tietokantaoperaatiot 
+Database luo tietokantayhteyden 
+Repository päättää käytetäänkö välimuistia vai API
+ViewModel  hallitsee UI:ta ja kutsuu Repoa
+
+Käyttäjä syöttää kaupungin ja painaa "Hae sää"
+ViewModel kutsuu Repoa
+Repository tarkistaa onko Roomissa dataa tälle kaupungille
+Jos data alle 30 min vanha tuodaan se välimuistista
+Jos vanhempaa tai ei löydy niin haetaan API:lla
+
+Välimuistilogiikka
+Sovellus tallentaa jokaisen haun Roomiin timestamp-kentän kanssa:
+
+Jos data alle 30 min vanha näytetään välimuistista
+Jos data yli 30 min vanha → haetaan API:sta ja päivitetään välimuisti
+Data säilyy vaikka sovellus suljetaan
+
+Välimuisti:
+
+Säästää API-kutsuja
+Nopeuttaa sovellusta
+Toimii offline-tilassa 
